@@ -44,7 +44,11 @@ function fail(item) {
 }
 
 function repair(item) {
-  return { ...item };
+  return (newItem = {
+    name: item.name,
+    durability: 100,
+    enhancement: item.enhancement
+  });
 }
 
 function get(item) {
