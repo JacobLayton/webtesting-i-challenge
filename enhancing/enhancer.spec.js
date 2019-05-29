@@ -23,3 +23,36 @@ describe("succeed", () => {
     expect(enhance.enhancement).toBe(11);
   });
 });
+
+describe("fail", () => {
+  it("Decreases durability by 5 if enhancement < 15", () => {
+    const item = {
+      name: "Sword",
+      durability: 50,
+      enhancement: 10
+    };
+    const fail = enhancer.fail(item);
+    expect(fail.durability).toBe(45);
+  });
+
+  it("Decreases durability by 10 if enhancement is 15 or 16", () => {
+    const item = {
+      name: "Sword",
+      durability: 50,
+      enhancement: 15
+    };
+    const fail = enhancer.fail(item);
+    expect(fail.durability).toBe(40);
+  });
+
+  it("Decreases durability by 10 and enhancement by 1 if enhancement > 16", () => {
+    const item = {
+      name: "Sword",
+      durability: 51,
+      enhancement: 20
+    };
+    const fail = enhancer.fail(item);
+    expect(fail.durability).toBe(41);
+    expect(fail.enhancement).toBe(19);
+  });
+});
