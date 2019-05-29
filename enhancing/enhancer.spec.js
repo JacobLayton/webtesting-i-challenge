@@ -56,3 +56,14 @@ describe("fail", () => {
     expect(fail.enhancement).toBe(19);
   });
 });
+
+describe("get", () => {
+  it("changes name to show ", () => {
+    const item = {
+      name: "Sword",
+      durability: 50,
+      enhancement: 10
+    };
+    const fail = enhancer.fail(item);
+    expect(fail.durability).toBe(45);
+  });
