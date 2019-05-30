@@ -58,12 +58,23 @@ describe("fail", () => {
 });
 
 describe("get", () => {
-  it("changes name to show ", () => {
+  it("changes name to show enhancement if enhancement != 0", () => {
     const item = {
       name: "Sword",
       durability: 50,
       enhancement: 10
     };
-    const fail = enhancer.fail(item);
-    expect(fail.durability).toBe(45);
+    const get = enhancer.get(item);
+    expect(get.name).toBe("[+10]Sword");
   });
+
+  it("does not change name if enhancement === 0", () => {
+    const item = {
+      name: "Sword",
+      durability: 50,
+      enhancement: 0
+    };
+    const get = enhancer.get(item);
+    expect(get.name).toBe("Sword");
+  });
+});
