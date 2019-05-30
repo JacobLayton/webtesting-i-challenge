@@ -58,7 +58,6 @@ function get(item) {
       durability: item.durability,
       enhancement: item.enhancement
     };
-    console.log(newItem.name);
     return newItem;
-  }
+  } else return item;
 }
